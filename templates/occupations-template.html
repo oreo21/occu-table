@@ -6,9 +6,14 @@
 </head>
 
 <body>
-  {% for item in jobCollection %}
-    {{ item }}
-    <br>
+  <h1><center>Occupation Info Page</center></h1>
+  <h2>What job do <i>you</i> want? Look below!</h2>
+  <table border = "1">
+  {% for key in jobCollection %}
+    <tr>
+      <th> {{ key }} </th>
+      <td> {{ jobCollection[key] }} </td>
+    </tr>
   {% endfor %}
 </body>
 

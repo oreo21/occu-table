@@ -3,20 +3,6 @@ import random
 
 app = Flask(__name__)
 
-@app.route("/")
-def whatever():
-    return "This page isn't meant to be accessed!"
-
-jobDict = [1,2,3,4,5]
-
-@app.route("/occupations")
-def printJobs():
-    return render_template('occupations-template.html', jobCollection = jobDict)
-        
-if __name__ == "__main__":
-    app.debug = True
-    app.run()
-    
 def scanCSV(CSVfile):   
     instream=open(CSVfile, 'r')
     content=instream.read().strip()
@@ -36,6 +22,22 @@ def genDictionary(data):
     for a in list2:
         dict1[a[0]] = a[1]
     return dict1
+
+@app.route("/")
+def whatever():
+    return "This page isn't meant to be accessed!"
+
+jobDict = genDictionary(scanCSV('occupations.csv'))
+jobRand
+
+@app.route("/occupations")
+def printJobs():
+    return render_template('occupations-template.html', jobCollection = jobDict, myJob = jobRand)
+        
+if __name__ == "__main__":
+    app.debug = True
+    app.run()
+    
 
 def getRandomOccupation(occupations):
     # print occupations
