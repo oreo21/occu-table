@@ -23,12 +23,20 @@ def genDictionary(data):
         dict1[a[0]] = a[1]
     return dict1
 
+def getRandomOccupation(occupations):
+    occupationNames = []
+    for occupation in occupations:
+        for i in range(int(occupations[occupation] * 10)):
+            occupationNames.insert(len(occupationNames), occupation)
+    random.shuffle(occupationNames)
+    return occupationNames[random.randint(0, len(occupationNames) - 1)]
+
+jobDict = genDictionary(scanCSV('occupations.csv'))
+jobRand = getRandomOccupation(jobDict)
+
 @app.route("/")
 def whatever():
     return "This page isn't meant to be accessed!"
-
-jobDict = genDictionary(scanCSV('occupations.csv'))
-jobRand
 
 @app.route("/occupations")
 def printJobs():
@@ -37,21 +45,7 @@ def printJobs():
 if __name__ == "__main__":
     app.debug = True
     app.run()
-    
 
-def getRandomOccupation(occupations):
-    # print occupations
-    occupationNames = []
-    for occupation in occupations:
-        # pos = 0
-        for i in range(int(occupations[occupation] * 10)):
-            # pos += 1
-            occupationNames.insert(len(occupationNames), occupation)
-        # print pos
-    random.shuffle(occupationNames)
-    # print occupationNames
-    return occupationNames[random.randint(0, len(occupationNames) - 1)]
-
-print getRandomOccupation(genDictionary(scanCSV("occupations.csv")))
+#print getRandomOccupation(genDictionary(scanCSV("occupations.csv")))
 #print scanCSV("occupations.csv")
 
