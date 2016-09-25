@@ -16,18 +16,18 @@ def genDictionary(data):
     del list1[0]
     del list1[-1]
     for x in list1:
-        entry = x.rsplit(",", 1)
+        entry = x.rsplit(",", 2)
         entry[1] = float(entry[1])
         list2.append(entry)
     for a in list2:
-        dict1[a[0]] = a[1]
+        dict1[a[0]] = [a[1],a[2]]
     return dict1
 
 def getRandomOccupation(occupations):
     occupationNames = []
-    for occupation in occupations:
-        for i in range(int(occupations[occupation] * 10)):
-            occupationNames.insert(len(occupationNames), occupation)
+    for data in occupations:
+        for i in range(int(occupations[data][0] * 10)):
+            occupationNames.insert(len(occupationNames), data)
     random.shuffle(occupationNames)
     return occupationNames[random.randint(0, len(occupationNames) - 1)]
 

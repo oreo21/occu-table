@@ -2,19 +2,38 @@
 <html>
 
 <head>
-  <title>Job Lalapalooza</title>
+  <title>Book of Job(C) - Data</title>
+  <style>
+  	table, th, td {
+  		border: 1px solid black; 
+  		border-collapse: collapse;
+  	}
+  </style>
 </head>
 
 <body>
-  <h1><center>Occupation Info Page</center></h1>
-  <h2>What job do <i>you</i> want? Look below!</h2>
+  <h1><center>Book of Job(C) - Occupation Data</center></h1>
+  <p>"There was a man in the land of Uz whose name was Job, and that man was blameless and upright, one who feared God and turned away from evil." - Job.1[1]</p>
+  <p>Your name may not be Job, and you might not be from the land of Uz, but you too can be blameless and upright! Look at our table and figure out what job is best for you. The table contains the names of job sectors, their corresponding percentages in the U.S. workforce, and links that'll help you with the listed fields. Below the table, you'll find a job we think is best fit for you. Thanks for stopping by. We hope your future job is <i><b>L17!</b></i></p>
   <table border = "1">
+  <table align="center"
+  <tr>
+  	<th colspan="3"><font size="5">Jobs in the U.S.</font></th>
+  </tr>
+  <tr>
+  	<td><b>Occupation</td>
+  	<td><b>Percentage<b></td>
+  	<td><b>Useful Links</b></td>
+  </tr>
   {% for key in jobCollection %}
     <tr>
-      <th> {{ key }} </th>
-      <td> {{ jobCollection[key] }} </td>
+      <td> {{ key }} </td>
+      <td> {{ jobCollection[key][0] }}% </td>
+      <td> <a href="{{ jobCollection[key][1] }}">{{ jobCollection[key][1] }}</a></td>
     </tr>
   {% endfor %}
+  </table>
+  <font size="5.5"><p align="center"><b>The job best fit for you is: </b> {{ myJob }}</p></font>
 </body>
 
 </html>
